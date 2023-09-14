@@ -8,9 +8,9 @@ from secret import TWILIO_PHONE_NUMBER
 
 def send_message(phone_number, message):
     command = [
-        'curl', 'https://api.twilio.com/2010-04-01/Accounts/{ACCOUNT_SID}/Messages.json', '-X', 'POST',
+        'curl', f'https://api.twilio.com/2010-04-01/Accounts/{ACCOUNT_SID}/Messages.json', '-X', 'POST',
         '--data-urlencode', f'To=+{phone_number}',
-        '--data-urlencode', 'From=+{TWILIO_PHONE_NUMBER}',
+        '--data-urlencode', f'From=+{TWILIO_PHONE_NUMBER}',
         '--data-urlencode', f'Body={message}\nMessage from WebNinja Corp.\nReply STOP to unsubscribe',
         '-u', f'{ACCOUNT_SID}:{AUTH_TOKEN}'
     ]
